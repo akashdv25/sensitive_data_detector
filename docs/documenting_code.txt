@@ -220,5 +220,5 @@
 
 20. learnt about source distribution (.tar.gz) , is a compressed version of the source code, contains all code and metadata.
 
-issues faced :- github worflow version issues 
+issues faced :- github worflow version issues , related to python version
 package name already made so deleted everything and made again
