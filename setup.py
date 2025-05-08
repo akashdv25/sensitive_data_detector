@@ -67,7 +67,7 @@ setup(
     
     # Package Data
     package_data={
-        "sensitive_info_detector":[
+        "sensitive_data_detector":[
             "config.json",
         ],
     },
