@@ -219,3 +219,6 @@
 19. Learnt about wheel file (.whl) is a built distribution package for python , binary package 
 
 20. learnt about source distribution (.tar.gz) , is a compressed version of the source code, contains all code and metadata.
+
+issues faced :- github worflow version issues 
+package name already made so deleted everything and made again

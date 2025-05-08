@@ -17,7 +17,7 @@ setup(
     install_requires=[
         # No runtime dependencies needed
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.11",
     
     # Development Dependencies
     extras_require={
