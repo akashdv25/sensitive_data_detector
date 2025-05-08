@@ -2,7 +2,7 @@ import json
 from typing import Dict
 
 
-def load_patterns(config_path: str = "sensitive_info_detector/config.json") -> Dict[str, str]:
+def load_patterns(config_path: str = "sensitive_data_detector/config.json") -> Dict[str, str]:
     """Load sensitive information patterns from config file.
     and return a dictionary of patterns"""
     with open(config_path, "r") as f:
