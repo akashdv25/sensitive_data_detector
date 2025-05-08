@@ -5,7 +5,6 @@ A Python package that helps detect sensitive information in files and code. Prot
 [![PyPI version](https://badge.fury.io/py/sensitive-data-detector.svg)](https://badge.fury.io/py/sensitive-data-detector)
 [![Python Versions](https://img.shields.io/pypi/pyversions/sensitive-data-detector)](https://pypi.org/project/sensitive-data-detector)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://pepy.tech/badge/sensitive-data-detector)](https://pepy.tech/project/sensitive-data-detector)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
