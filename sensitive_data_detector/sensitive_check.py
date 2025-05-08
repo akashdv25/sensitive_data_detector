@@ -1,8 +1,10 @@
-from typing import Union
 from pathlib import Path
-from .load_patterns import load_patterns
-from .file_reader import get_file_content
+from typing import Union
+
 from .content_analyze import analyze_content
+from .file_reader import get_file_content
+from .load_patterns import load_patterns
+
 
 def has_sensitive_info(file_path: Union[str, Path]) -> bool:
     """Check if file contains any sensitive information."""

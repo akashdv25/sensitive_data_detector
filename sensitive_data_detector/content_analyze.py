@@ -1,6 +1,7 @@
 import re
 from typing import Dict, List
 
+
 def analyze_content(content: str, patterns: Dict[str, str]) -> Dict[str, List[str]]:
     """
     Analyze content for sensitive information using provided patterns.
