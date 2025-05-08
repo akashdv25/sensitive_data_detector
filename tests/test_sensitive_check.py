@@ -1,6 +1,5 @@
 # tests/test_sensitive_check.py
 import pytest
-import os
 from sensitive_data_detector.sensitive_check import has_sensitive_info
 
 # Test data fixtures
