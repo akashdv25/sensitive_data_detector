@@ -125,6 +125,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Akash Anandani  
 
+* [Email](akashanandani.56@gmail.com)
+
 
 ---
 

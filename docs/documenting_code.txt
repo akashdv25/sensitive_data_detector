@@ -191,7 +191,7 @@
     - It is used to release the package to the PyPI
     - It is used to mention the steps that need to be run in the release workflow
 
-    Flow is as follows:-
+    CD Flow is as follows:-
     Developer creates version tag
             ↓
     Release workflow runs automatically
@@ -214,13 +214,15 @@
 17. Learnt about pytest fixtures
     -A fixture in pytest is like a setup function that runs before your tests. It's marked with @pytest.fixture and provides test data or setup that your tests need.
 
-18. Learnt about twine , it is recommended to use twine to upload packages to pypi , it uploads both wheel files and source distributions
+18. Learnt about twine , it is recommended to use twine to upload packages to pypi , it uploads both wheel files and source distributions.
 
-19. Learnt about wheel file (.whl) is a built distribution package for python , binary package 
+19. Learnt about wheel file (.whl) is a built distribution package for python , binary package really fast used for uploading to pypi and used for intalling the package.
 
-20. learnt about source distribution (.tar.gz) , is a compressed version of the source code, contains all code and metadata.
+20. learnt about source distribution (.tar.gz) , is a compressed version of the source code, contains all code and metadata , used for uploading to pypi and used by pip to install the package.
 
-issues faced :- github worflow version issues , related to python version
-package name already made so deleted everything and made again
-steps taken to upload to pypi 
+21. some issues faced :-
+    - github worflow version issues , related to python version black was not supporting python 3.8 which was initially used in the project
+    - The package name was already used on pypi , so deleted everything and made the package  again changing the names.
+    - Got to know a silly mistake earlier i was thinking that the .pre-commit file was not working , but it was working fine , 
+      i got to know that we have to locally run it and then it makes inital changes by using script hooks then we commit and then ci workflow completed successfully.
 
