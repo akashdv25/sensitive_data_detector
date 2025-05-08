@@ -1,0 +1,53 @@
+This requirement was shared to me by my Senior at Dataverze for the asssignment.
+
+This assignment involves creating a utility package to detect sensitive information in text files.
+Here's a detailed breakdown of the steps  need to follow:
+
+1. Create a Separate Repository
+Set up a new Git repository for your utility package.
+
+2. Utility Functionality
+Input: The utility should accept a text file, either as a file path or as a string.
+Output: It should return true or false based on whether it detects sensitive information.
+
+3. Detection Logic
+Patterns: Use known patterns to detect sensitive information. Examples include strings starting with SECRET_, ending with _KEY, or _PASSWORD.
+Config File: Store these patterns in a configuration file that is part of your package. This allows for easy updates and customization.
+
+4. Testing
+Write test cases using pytest to demonstrate that your utility works correctly.
+Ensure you cover various scenarios, including edge cases.
+
+5. Code Quality
+Use code scanning tools like black for formatting and flake8 for linting.
+Set up pre-commit hooks to run these tools before every commit to maintain code hygiene.
+
+6. Build the Package
+Learn how to build your package as a wheel file locally. This involves creating a setup.py file and using setuptools.
+
+7. Release to PyPI
+Learn how to release your package to the Python Package Index (PyPI) so it can be installed by others.
+This involves creating an account on PyPI and using tools like twine to upload your package.
+
+8. Automate with GitHub Actions
+Set up GitHub Actions to automate the release process.
+Ensure that whenever a pull request is merged into the main branch, a new package version is created and released on PyPI.
+
+9. Documentation
+Document your code and provide a README file explaining how to use the utility, run tests, and contribute.
+
+10. Learning and Iteration
+As you work through these steps, take the opportunity to learn about each tool and process.
+Iterate on your code based on feedback and testing results.
+
+Tools and Technologies
+Git & GitHub: For version control and collaboration.
+Python: For writing the utility and tests.
+Pytest: For testing.
+Black & Flake8: For code formatting and linting.
+Setuptools & Twine: For building and releasing the package.
+GitHub Actions: For CI/CD automation.
+
+
+
+

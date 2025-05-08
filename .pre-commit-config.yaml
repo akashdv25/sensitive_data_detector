@@ -1,0 +1,26 @@
+#this file is used to configure the pre-commit hooks i.e the hooks that run before each commit
+
+repos:
+-   repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+    -   id: black
+        args: [--line-length=88]  # Black will format code automatically
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+    -   id: isort
+        args: ["--profile", "black"]  # isort will sort imports automatically
+
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+    -   id: flake8
+        args: [--max-line-length=88]  # flake8 will check after formatting
+
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.910
+    hooks:
+    -   id: mypy
+        additional_dependencies: [types-all]

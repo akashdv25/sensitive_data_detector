@@ -1,0 +1,221 @@
+## Started by breaking down my project approach:
+
+1. First Steps:
+    - Didn't start with complex parts (wheel file, PyPI, GitHub automation)
+    - Created basic GitHub repo to track changes
+    - Researched package structures by looking at other GitHub projects
+
+2. Planning:
+    - Broke down the problem into smaller parts
+    - Used ChatGPT to write clear, structured notes
+    - Can refer to these notes anytime available at assignment-requirement.txt
+
+3. Starting Simple:
+    - Focused on basic requirement: check if file has sensitive info
+    - Could have written all code in one big 50-60 line script
+    - Instead, split into different .py files for:
+        - Better organization
+        - Easier debugging
+        - Separate testing of each part
+        - modularity
+
+4. Current Workflow:
+    
+    1.  User Input:
+        - User provides a file path (could be .py, .txt, or any text file)
+        - This path goes to sensitive_check.py
+    
+    2. Pattern Storage (config.json):
+        - Stores regex patterns for sensitive information
+        - Contains patterns for:
+            - API keys
+            - Passwords
+            - Database credentials
+            - Private keys
+            - Tokens
+            - Emails
+    
+    3. Pattern Loading (load_patterns.py):
+        - Takes patterns from config.json
+        - Returns them as a Python dictionary
+        - Makes patterns ready for matching
+    
+    4. File Processing (file_reader.py):
+        - Takes the input file path
+        - Handles both string paths and Path objects
+        - Reads file content
+        - Returns file content as string
+        - Includes error handling for missing files
+    
+    5. Pattern Matching (content_analyze.py):
+        - Uses regex to find sensitive information
+        - Checks file content against each pattern
+        - When match found, stores in dictionary
+    
+    6. Final Check (sensitive_check.py):
+        - Brings all components together
+        - Loads patterns
+        - Reads file
+        - Analyzes content
+        - Returns True if sensitive info found
+        - Returns False if no sensitive info found
+
+5. While testing the code locally, I faced some issues:
+    
+    - I was not able to load the function has_sensitive_info from sensitive_check.py file.
+    - Then searched about it and found :-
+        Python checks in this order:
+        1. Current directory (where script is running)
+        2. Installed packages in site-packages
+        3. Python standard library
+
+    - So the solution was to  use setup.py to install the package in the local machine as it will be usefull in coming steps for pypi and github actions
+    
+    -Test workflow:-    
+        
+        Test starts
+            ↓
+        @pytest.fixture creates temp files
+            ↓
+        Tests run with file paths
+            ↓
+        has_sensitive_info reads files
+            ↓
+        Assertions check results
+            ↓
+        Temp files are cleaned up    
+
+
+7. Learnt about setup.py file
+    
+    - It is used to install the package and makes the package available to install via pip
+    - It is used to mention all the dependencies of the package , with all the other metadata of the package
+
+8. Learnt about versioning of the package
+    MAJOR.MINOR.PATCH
+    
+    - MAJOR (1.0.0): Breaking changes
+    - MINOR (0.2.0): New features, no breaking changes
+    - PATCH (0.1.1): Bug fixes, no breaking changes
+
+9.Each time a pr get merged, the version gets updated  as it is to be explicitly mentioned in the version.py file
+
+10. Learn about pre-commit hooks
+    
+    -Pre-commit hooks run before each commit 
+    
+    -Common hooks:
+    # Code Formatting
+    - black          # Code formatter
+    - isort          # Import sorter
+    - yapf           # Another formatter
+
+    # Linting
+    - flake8         # Style checker
+    - pylint         # Code analyzer
+    - bandit         # Security linter
+
+    # Type Checking
+    - mypy           # Type checker
+
+    # Security
+    - safety         # Checks dependencies
+    - detect-secrets # Finds secrets
+
+    # Documentation
+    - docformatter   # Formats docstrings
+    - pydocstyle     # Checks docstrings
+
+    # Testing
+    - pytest         # Runs tests
+
+11. Learnt about .pre-commit-config.yaml file
+    - It is used to configure the pre-commit hooks
+    - It is used to mention the hooks that need to be run before each commit
+
+    Flow is as follows:-
+    Developer:
+    1. Makes changes
+    2. Tries to commit
+    3. pre-commit hooks run locally
+    4. If hooks pass, commit succeeds
+    5. If hooks fail, commit is blocked
+
+    Then:
+    1. Developer pushes to main
+    2. CI/CD runs
+    3. pre-commit hooks run again
+    4. If hooks pass, CI/CD continues
+    5. If hooks fail, CI/CD fails
+
+12. How it works:-
+    # Developer makes changes
+    git add .
+    git commit -m "New feature"
+
+    # Pre-commit automatically:
+    1. Formatters (fix automatically):
+        - black: Formats code
+        - isort: Sorts imports
+    2. Checkers (report issues):
+        - flake8: Reports style issues
+        - mypy: Reports type issues
+
+13. Learnt about .github/workflows/ci.yml file
+    - It is used to configure the CI/CD pipeline
+    - It is used to mention the steps that need to be run in the CI/CD pipeline
+
+14. Ci/cd pipeline:-
+    
+    - Continues integration:-
+        - It is used to run the tests and checks on the code before it is merged into the main branch   
+    - Continues deployment:-
+        - It is used to deploy the code to the production environment
+
+
+    CI (Continuous Integration):
+        - Runs automatically on every push/PR
+        - Just commit and push
+        - Checks code quality
+        - Runs tests
+
+    CD (Continuous Deployment):
+        - Only runs when you specifically create and push a tag(version tag)
+        - Manual step required
+        - Need to create version tag
+        - Builds and publishes to PyPI  
+
+
+15. Release workflow:-
+    
+    - It is used to release the package to the PyPI
+    - It is used to mention the steps that need to be run in the release workflow
+
+    Flow is as follows:-
+    Developer creates version tag
+            ↓
+    Release workflow runs automatically
+            ↓
+
+16. Complete workflow:-
+    
+    Developer pushes code
+            ↓
+    CI workflow runs automatically
+            ↓
+    Tests pass
+            ↓
+    Developer creates version tag
+            ↓
+    CD workflow runs automatically
+            ↓
+    Package published to PyPI
+
+17. Learnt about pytest fixtures
+    -A fixture in pytest is like a setup function that runs before your tests. It's marked with @pytest.fixture and provides test data or setup that your tests need.
+
+18. Learnt about twine , it is recommended to use twine to upload packages to pypi , it uploads both wheel files and source distributions
+
+19. Learnt about wheel file (.whl) is a built distribution package for python , binary package 
+
+20. learnt about source distribution (.tar.gz) , is a compressed version of the source code, contains all code and metadata.
