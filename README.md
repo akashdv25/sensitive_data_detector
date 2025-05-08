@@ -111,6 +111,12 @@ Contributions are welcome! Here's how you can help:
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
+## 🔗 Project Links
+
+- [PyPI: sensitive-data-detector 1.0.2](https://pypi.org/project/sensitive-data-detector/1.0.2/)
+- [GitHub Repository](https://github.com/akashdv25/sensitive_data_detector)
+- [Bug Tracker](https://github.com/akashdv25/sensitive_data_detector/issues)
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -120,11 +126,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Akash Anandani  
 
-- [Email](akashanandani.56@gmail.com)
 
-- [Project Repo Link](https://github.com/akashdv25/sensitive_info_detector)
-
-- [Official PyPI Page](https://pypi.org/project/sensitive-data-detector/)
 ---
 
 Made with ❤️ by [Akash Anandani](https://github.com/akashdv25)

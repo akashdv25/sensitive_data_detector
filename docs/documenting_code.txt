@@ -222,3 +222,5 @@
 
 issues faced :- github worflow version issues , related to python version
 package name already made so deleted everything and made again
+steps taken to upload to pypi 
+
