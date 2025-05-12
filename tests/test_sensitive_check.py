@@ -1,7 +1,7 @@
 # tests/test_sensitive_check.py
 import pytest
 
-from sensitive_data_detector.sensitive_check import has_sensitive_info
+from sensitive_data_detector.sensitive_check import SensitiveChecker
 
 
 # Test data fixtures
@@ -40,19 +40,22 @@ def sample_files(tmp_path):
 # Basic tests
 def test_has_sensitive_info_email(sample_files):
     """Test email detection"""
-    result = has_sensitive_info(sample_files["email"])
+    checker = SensitiveChecker()
+    result = checker.has_sensitive_info(sample_files["email"])
     assert result is True
 
 
 def test_has_sensitive_info_api_key(sample_files):
     """Test api key detection"""
-    result = has_sensitive_info(sample_files["api_key"])
+    checker = SensitiveChecker()
+    result = checker.has_sensitive_info(sample_files["api_key"])
     assert result is True
 
 
 def test_has_sensitive_info_clean(sample_files):
     """Test clean file"""
-    result = has_sensitive_info(sample_files["clean"])
+    checker = SensitiveChecker()
+    result = checker.has_sensitive_info(sample_files["clean"])
     assert result is False
 
 
@@ -60,7 +63,8 @@ def test_has_sensitive_info_clean(sample_files):
 def test_has_sensitive_info_file_not_found():
     """Test non-existent file"""
     with pytest.raises(FileNotFoundError):
-        has_sensitive_info("nonexistent_file.txt")
+        checker = SensitiveChecker()
+        checker.has_sensitive_info("nonexistent_file.txt")
 
 
 # edge case
@@ -68,5 +72,6 @@ def test_has_sensitive_info_empty_file(tmp_path):
     """Test empty file"""
     empty_file = tmp_path / "empty.txt"
     empty_file.write_text("")
-    result = has_sensitive_info(str(empty_file))
+    checker = SensitiveChecker()
+    result = checker.has_sensitive_info(str(empty_file))
     assert result is False
