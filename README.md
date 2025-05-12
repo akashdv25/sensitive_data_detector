@@ -17,6 +17,7 @@ A Python package that helps detect sensitive information in files and code. Prot
 - ⚙️ Configurable detection patterns
 - 📁 Works with any text-based file
 - 🛡️ Pre-commit hook support
+- 🧑‍💻 **Now fully object-oriented for easier extension and testing!**
 
 ## 📦 Installation
 
@@ -27,14 +28,14 @@ pip install sensitive_data_detector
 ## 🎯 Quick Start
 
 ```python
-from sensitive_data_detector import has_sensitive_info
+from sensitive_data_detector import SensitiveChecker
 
-# Check a single file
-result = has_sensitive_info("path/to/your/file.txt")
+checker = SensitiveChecker()  # Optionally pass a custom config path
+result = checker.has_sensitive_info("path/to/your/file.txt")
 if result:
-    True (sensitive info found in the file)
+    True #(sensitive info found in the file)
 else:
-    False (no sensitive info found)
+    False #(no sensitive info found)
 ```
 
 ## 🔍 What It Detects
@@ -45,6 +46,7 @@ The package detects various types of sensitive information, including:
 - Email Addresses
 - Private Keys
 - Access Tokens
+- Passwords
 - And more configurable patterns
 
 ## 🛠️ Development Setup
@@ -75,15 +77,14 @@ The package uses a `config.json` file that defines patterns for sensitive inform
 Default patterns include:
 ```json
 {
-    "patterns": {
-        "api_key": "api[_-]?key['\"]?\\s*[:=]\\s*['\"]([\\w-]+)['\"]",
-        "email": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+    "sensitive_info": {
+        "api_keys": "(?i)((api[_-]key|apikey|api_secret|api[_-]token|auth[_-]token|access[_-]token)['\"]?\\s*[:=]\\s*['\"]([\\w\\-._]+)['\"])",
+        "emails": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"
     }
 }
 ```
 
 ## 🐍 Python Version Support
-
 
 - Python 3.9
 - Python 3.10
@@ -97,6 +98,15 @@ Default patterns include:
 - [Flake8](https://flake8.pycqa.org/) - Code Linting
 - [pytest](https://docs.pytest.org/) - Testing Framework
 - [pre-commit](https://pre-commit.com/) - Git Hooks Framework
+- **Now with full type checking using [mypy](http://mypy-lang.org/)**
+
+## 🆕 Changelog
+
+### v1.1.0 (new)
+- Refactored core modules to use object-oriented programming (OOP) principles.
+- Added `SensitiveChecker`, `PatternLoader`, `FileReader`, and `ContentAnalyzer` classes.
+- Improved type annotations and mypy compatibility.
+- Enhanced code maintainability and extensibility.
 
 ## 🤝 Contributing
 
@@ -112,7 +122,7 @@ Contributions are welcome! Here's how you can help:
 
 ## 🔗 Project Links
 
-- [PyPI: sensitive-data-detector 1.0.2](https://pypi.org/project/sensitive-data-detector/1.0.2/)
+- [PyPI: sensitive-data-detector](https://pypi.org/project/sensitive-data-detector/)
 - [GitHub Repository](https://github.com/akashdv25/sensitive_data_detector)
 - [Bug Tracker](https://github.com/akashdv25/sensitive_data_detector/issues)
 
@@ -120,13 +130,10 @@ Contributions are welcome! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
 ## 📫 Contact
 
 Akash Anandani  
-
-* [Email](akashanandani.56@gmail.com)
-
+* [Email](mailto:akashanandani.56@gmail.com)
 
 ---
 
